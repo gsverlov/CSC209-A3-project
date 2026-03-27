@@ -1,5 +1,6 @@
 // worker.c - child process logic
-// reads jobs from task pipe, runs simulation, sends results back
+// each worker sits in a loop reading job_msg_t from its task pipe,
+// runs the requested simulation, and writes a result_msg_t back
 
 #include "montecarlo.h"
 
