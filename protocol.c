@@ -1,4 +1,6 @@
 // protocol.c - wrappers for reading and writing full messages over pipes
+// since read() and write() can return partial results, these functions
+// loop until the full message is transferred (or an error occurs)
 
 #include "montecarlo.h"
 
@@ -24,7 +26,8 @@ int write_all(int fd, const void *buf, size_t len) {
 }
 
 // reads exactly len bytes from fd
-// returns 0 on success, 1 on clean EOF, -1 on error
+// returns 0 on success, 1 on clean EOF (pipe closed before any bytes),
+// -1 on error (including mid-message EOF which sets errno=ECONNRESET)
 int read_all(int fd, void *buf, size_t len) {
     char *p = (char *)buf;
     size_t remaining = len;
