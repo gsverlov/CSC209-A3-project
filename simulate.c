@@ -1,4 +1,6 @@
 // simulate.c - the actual monte carlo simulations
+// each function takes a trial count and seed, returns an estimate
+// uses rand_r() so each worker has independent reproducible randomness
 
 #include "montecarlo.h"
 
