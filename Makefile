@@ -1,15 +1,13 @@
-# Makefile for Monte Carlo Parallel Estimator
-# CSC209 Assignment 3 – Category 1 (Pipes)
+# Makefile for montecarlo project
 
-CC      = gcc
-CFLAGS  = -Wall -Wextra -std=c99 -g -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99 -g -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE
 LDFLAGS = -lm
 
-SRCS    = main.c worker.c simulate.c protocol.c
-OBJS    = $(SRCS:.c=.o)
-TARGET  = montecarlo
+SRCS = main.c worker.c simulate.c protocol.c
+OBJS = $(SRCS:.c=.o)
+TARGET = montecarlo
 
-# Default rule – must be first
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
